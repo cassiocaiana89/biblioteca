@@ -18,3 +18,10 @@ model livro{
   titulo String
   autor String
 }
+
+model Cliente{
+  id Int @id @default(autoincrement())
+  nome String
+  cpf String @unique
+  telefone String
+}
