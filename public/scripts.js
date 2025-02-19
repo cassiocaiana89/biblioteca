@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const publicado = document.getElementById('publicado').value;
 
         try {
-            const response = await fetch('/livros', {
+            const response = await fetch('http://localhost:3000/livros', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ titulo, autor, publicado })
             });
             const livro = await response.json();
-            addLivroToList(livro);
+            fetchLivros();
+            //addLivroToList(livro);
             form.reset();
         } catch (error) {
             console.error('Erro ao adicionar livro:', error);
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchLivros = async () => {
         try {
-            const response = await fetch('/livros');
+            const response = await fetch('http://localhost:3000/livros');
             const livros = await response.json();
             livros.forEach(addLivroToList);
         } catch (error) {
