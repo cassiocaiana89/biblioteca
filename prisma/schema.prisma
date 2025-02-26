@@ -19,22 +19,12 @@ model livro{
   autor String
 }
 
-model Cliente{
+model Usuario{
   id Int @id @default(autoincrement())
-  nome String
-  cpf String @unique
-  telefone String
-}
-
-model login{
-  id Int @id @default(autoincrement())
+  nome String?
   email String
   senha String
+  cpf String? @unique
+  telefone String?
 }
 
-model cadastro{
-  id Int @id @default(autoincrement())
-  nome String
-  email String
-  senha String
-}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/login/style.css" />
+  </head>
+  <body>
+    <h1>LOGIN</h1>
+    <form id="add-login-form">
+      <input type="text" id="email" name="email" placeholder="email" required />
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        placeholder="senha"
+        required
+      />
+      <button type="submit">entrar</button>
+    </form>
+    <div id="error-message" style="color: red"></div>
+    <p>
+      Não tem uma conta? <a href="../cadastro/index.html">Cadastre-se aqui</a>
+    </p>
+    <script src="/login/scripts.js"></script>
+  </body>
+</html>
