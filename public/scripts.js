@@ -18,16 +18,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const livro = await response.json();
             fetchLivros();
-            //addLivroToList(livro);
+            
             form.reset();
         } catch (error) {
             console.error('Erro ao adicionar livro:', error);
         }
     });
 
+    const deletarLivro = async (id) => {
+        try {
+            await fetch(`http://localhost:3000/livros/${id}`, {
+                method: 'DELETE'
+            });
+            fetchLivros();
+        } catch (error) {
+            console.error('Erro ao deletar livro:', error);
+        }
+    };
+    
     const addLivroToList = (livro) => {
         const li = document.createElement('li');
         li.textContent = `${livro.titulo} - ${livro.autor} (Publicado em: ${new Date(livro.publicado).toLocaleDateString()})`;
+    
+        const deletarBotao = document.createElement('button');
+        deletarBotao.textContent = 'Deletar';
+        deletarBotao.addEventListener('click', () => {
+            deletarLivro(livro.id);
+        });
+    
+        li.appendChild(deletarBotao);
         livrosList.appendChild(li);
     };
 

@@ -25,3 +25,16 @@ model Cliente{
   cpf String @unique
   telefone String
 }
+
+model login{
+  id Int @id @default(autoincrement())
+  email String
+  senha String
+}
+
+model cadastro{
+  id Int @id @default(autoincrement())
+  nome String
+  email String
+  senha String
+}
