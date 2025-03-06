@@ -3,19 +3,16 @@ const express = require('express');
 const router = express.Router();
 
 const cadastroController = require('../controllers/cadastroController');
+const auth = require('../middleware/auth');
 
 
-router.get('/cadastro', cadastroController.index);
+router.get('/page/cadastro', cadastroController.page);
 
-router.get('/cadastro/:id', cadastroController.show);
+router.get("/page/dashboard/cadastro", cadastroController.dashboard);
 
-router.get('/cadastro/pesquisa/:email', cadastroController.search);
+router.post('/cadastro', cadastroController.authentication);
 
-router.post('/cadastro', cadastroController.store);
 
-router.put('/cadastro/:id', cadastroController.update);
-
-router.delete('/cadastro/:id', cadastroController.delete);
 
 
 module.exports = router;

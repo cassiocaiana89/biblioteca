@@ -1,64 +1,41 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('add-cadastro-form');
-    const livrosList = document.getElementById('cadastro-list');
-
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const nome = document.getElementById('nome').value;
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-        
-        try {
-            const response = await fetch('http://localhost:3000/cadastro', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ nome, email, senha })
-            });
-            const cadastro = await response.json();
-            fetchcadastro();
-            
-            form.reset();
-        } catch (error) {
-            console.error('Erro ao cadastrar:', error);
-        }
-    });
-
-    const deletarCadastro = async (id) => {
-        try {
-            await fetch(`http://localhost:3000/cadastro/${id}`, {
-                method: 'DELETE'
-            });
-            fetchcadastro();
-        } catch (error) {
-            console.error('Erro ao deletar cadastro:', error);
-        }
-    };
-    
-    const addCadastroToList = (cadastro) => {
-        const li = document.createElement('li');
-        li.textContent = `${cadastro.nome} - ${cadastro.email} - ${cadastro.senha})`;
-    
-        const deletarBotao = document.createElement('button');
-        deletarBotao.textContent = 'Deletar';
-        deletarBotao.addEventListener('click', () => {
-            deletarLivro(cadastro.id);
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("add-login-form");
+    const errorMessage = document.getElementById("error-message");
+  
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+  
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      
+  
+      try {
+        const response = await fetch("http://localhost:3000/cadastro", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nome, email, senha }),
         });
-    
-        li.appendChild(deletarBotao);
-        livrosList.appendChild(li);
-    };
-
-    const fetchLivros = async () => {
-        try {
-            const response = await fetch('http://localhost:3000/cadastro');
-            const cadastro = await response.json();
-            cadastro.forEach(addCadastroToList);
-        } catch (error) {
-            console.error('Erro ao buscar cadastro:', error);
+        const data = await response.json();
+        if (data) {
+          window.location.href = "http://localhost:3000/page/dashboard/cadastro";
+        } else {
+          errorMessage.textContent = "Erro ao logar. Tente novamente.";
         }
-    };
-
-    fetchLivros();
-});
+        /*if (response.redirected) {
+          window.location.href = response.url;
+        } else {
+          const result = await response.text();
+          errorMessage.textContent = result;
+        }
+  
+        form.reset();*/
+      } catch (error) {
+        console.error("Erro ao logar:", error);
+        errorMessage.textContent = "Erro ao logar. Tente novamente.";
+      }
+    });
+  });
+  

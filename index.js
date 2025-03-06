@@ -8,7 +8,7 @@ const routersClientes = require("./routes/cliente.routers");
 const routersCadastro = require("./routes/cadastro.routers");
 const routerslogin = require("./routes/login.routers");
 
-app.set("trust proxy", 1); // trust first proxy
+app.set("trust proxy", 1); 
 app.use(
   session({
     secret: "s3Cur3",
