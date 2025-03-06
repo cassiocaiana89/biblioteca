@@ -1,24 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biblioteca</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>CADASTRO</h1>
-    <form id="add-cadastro-form">
-        <input type="text" id="nome" placeholder="nome" required>
-        <input type="text" id="email" placeholder="email" required>
-        <input type="text" id="senha" placeholder="senha" required>
-        
-        <button type="submit">cadastrar</button>
-        <p><a href="../login/index.html">Voltar</a></p>
-       
-    </form>
-    <h2>Cadastrados</h2>
-    <ul id="cadastro-list"></ul>
-    <script src="/public/cadastro/scripts.js"></script>
-</body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="list-usuarios"></div>
+    <script src="/public/cadastro/scriptsList.js"></script>
+  </body>
 </html>
