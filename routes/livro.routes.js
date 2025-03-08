@@ -5,17 +5,27 @@ const router = express.Router();
 const livroController = require('../controllers/livro.controller');
 
 
-router.get('/livros', livroController.index);
+// views
 
-router.get('/livros/:id', livroController.show);
+router.get("page/livros", livroController.index);
 
-router.get('/livros/pesquisa/:nome', livroController.search);
+router.get("page/livros/edit/:id", livroController.edit);
 
-router.post('/livros', livroController.store);
+router.get("page/livros/create/", livroController.create);
 
-router.put('/livros/:id', livroController.update);
+router.get("page/livros/:id", livroController.show);
 
-router.delete('/livros/:id', livroController.delete);
+// controllers
+
+router.get("/livros", livroController.list);
+
+router.get("/livros/:id", livroController.search);
+
+router.post("/livros", livroController.store);
+
+router.put("/livros/:id", livroController.update);
+
+router.delete("/livros/:id", livroController.destroy);
 
 
 module.exports = router;

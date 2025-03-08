@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const data = await response.json();
       if (data) {
-        //window.location.href = "http://localhost:3000/page/dashboard/cadastro";
+        window.location.href = "http://localhost:3000/page/dashboard/cadastro";
       } else {
         errorMessage.textContent = "Erro ao logar. Tente novamente.";
       }

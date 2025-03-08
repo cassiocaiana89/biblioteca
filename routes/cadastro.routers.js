@@ -5,13 +5,7 @@ const router = express.Router();
 const cadastroController = require("../controllers/cadastroController");
 const auth = require("../middleware/auth");
 
-// router.get('/page/cadastro', cadastroController.page);
 
-// router.get("/page/dashboard/cadastro", cadastroController.dashboard);
-
-// router.post('/cadastro', cadastroController.authentication);
-
-// Rotas dos Views
 
 router.get("/page/usuarios", cadastroController.index);
 
@@ -26,6 +20,8 @@ router.get("/page/usuarios/:id", cadastroController.show);
 router.get("/usuarios", cadastroController.list);
 
 router.get("/usuarios/:id", cadastroController.search);
+
+router.post("/cadastro", cadastroController.store);
 
 router.post("/usuarios", cadastroController.store);
 

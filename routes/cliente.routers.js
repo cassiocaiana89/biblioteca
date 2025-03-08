@@ -5,17 +5,26 @@ const router = express.Router();
 const clienteController = require('../controllers/clienteController');
 
 
-router.get('/clientes', clienteController.index);
+//views
 
-router.get('/clientes/:id', clienteController.show);
+router.get("page/clientes", clienteController.index);
 
-router.get('/clientes/pesquisa/:nome', clienteController.search);
+router.get("page/clientes/edit/:id", clienteController.edit);
 
-router.post('/clientes', clienteController.store);
+router.get("page/clientes/create/", clienteController.create);
 
-router.put('/clientes/:id', clienteController.update);
+router.get("page/clientes/:id", clienteController.show);
 
-router.delete('/clientes/:id', clienteController.delete);
+// controllers
 
+router.get("/clientes", clienteController.list);
+
+router.get("/clientes/:id", clienteController.search);
+
+router.post("/clientes", clienteController.store);
+
+router.put("/clientes/:id", clienteController.update);
+
+router.delete("/clientes/:id", clienteController.destroy);
 
 module.exports = router;

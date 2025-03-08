@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
   
       try {
-        const response = await fetch("http://localhost:3000/cadastro", {
+        const response = await fetch("http://localhost:3000/usuarios", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -20,18 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         const data = await response.json();
         if (data) {
-          window.location.href = "http://localhost:3000/page/dashboard/cadastro";
+          window.location.href = "http://localhost:3000/page/dashboard/usuarios";
         } else {
           errorMessage.textContent = "Erro ao logar. Tente novamente.";
         }
-        /*if (response.redirected) {
-          window.location.href = response.url;
-        } else {
-          const result = await response.text();
-          errorMessage.textContent = result;
-        }
-  
-        form.reset();*/
+        
       } catch (error) {
         console.error("Erro ao logar:", error);
         errorMessage.textContent = "Erro ao logar. Tente novamente.";

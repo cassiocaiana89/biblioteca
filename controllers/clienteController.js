@@ -1,57 +1,77 @@
+// criar cliente controller
 
-const {PrismaClient} = require('@prisma/client')
-const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client');
+const prisma =  new PrismaClient();
 
-class Clientecontroller {
+class ClienteController {
+    async index( req, res)  {
+        res.sendFile("index.html", { root: "./views/cliente/" });
+    }
 
-    async index ( req, res)  {
+    async show( req, res)  {
+        res.sendFile("show.html", { root: "./views/cliente/" });
+    }
+
+    async create( req, res)  {
+        res.sendFile("create.html", { root: "./views/cliente/" });
+    }
+
+    async edit( req, res)  {
+        res.sendFile("edit.html", { root: "./views/cliente/" });
+    }
+
+    async store( req, res)  {
+        const { nome, email, senha } = req.body;
+        const cliente = await prisma.cliente.create({
+            data: {
+                nome,
+                email,
+                senha,
+            },
+        });
+        res.json(cliente);
+    }
+
+    async update( req, res)  {
+        const { id } = req.params;
+        const { nome, email, senha } = req.body;
+        const cliente = await prisma.cliente.update({
+            where: {
+                id: parseInt(id),
+            },
+            data: {
+                nome,
+                email,
+                senha,
+            },
+        });
+        res.json(cliente);
+    }
+
+    async destroy( req, res)  {
+        const { id } = req.params;
+        const cliente = await prisma.cliente.delete({
+            where: {
+                id: parseInt(id),
+            },
+        });
+        res.json(cliente);
+    }
+
+    async list( req, res)  {
         const clientes = await prisma.cliente.findMany();
         res.json(clientes);
     }
 
-    async show ( req, res)  {
-        const id = req.params.id;
-        const clientes = await prisma.cliente.findUnique(
-            {
-                where: { id: parseInt(id) },
-            }
-    );
-        res.json(clientes);
+    async search( req, res)  {
+        const { id } = req.params;
+        const cliente = await prisma.cliente.findUnique({
+            where: {
+                id: parseInt(id),
+            },
+        });
+        res.json(cliente);
     }
 
-    async search( req, res) {
-        const nome = req.params.nome;
-        const clientes = await prisma.cliente.findFirst(
-            {
-                where: { nome },
-            }
-    );
-        res.json(clientes);
-    }
-
-    async store (req, res)  {
-        const { nome, cpf, telefone } = req.body;
-        const cliente = await prisma.cliente.create({
-            data: { nome, cpf, telefone },
-        });
-        res.json(cliente);
-    }
-    async update (req, res)  {
-        const{id} = req.params;
-        const { nome, cpf, telefone } = req.body;
-        const cliente = await prisma.cliente.update({
-            where: { id: parseInt(id) },
-            data: { nome, cpf, telefone },
-        });
-        res.json(cliente);
-    }
-    async delete (req, res)  {
-        const {id} = req.params;
-        const cliente = await prisma.cliente.delete({
-            where: { id: parseInt(id) },
-        });
-        res.json(cliente);
-        res.status(404).json({ error: 'Usuário não encontrada'});
-    }
 }
-module.exports = new Clientecontroller();
+module.exports = new ClienteController();

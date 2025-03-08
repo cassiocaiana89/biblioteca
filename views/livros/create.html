@@ -8,16 +8,16 @@
   </head>
   <body>
     <h1>CADASTRO</h1>
-    <form id="add-cadastro-form" action="/usuarios"  method="POST">
+    <form id="add-cadastroLivro-form" action="/livros"  method="POST">
       <input type="text" id="nome" name="nome" placeholder="nome" required />
-      <input type="email" id="email" name="email"  placeholder="email" required />
-      <input type="password" id="senha" name="senha" placeholder="senha" required />
+      <input type="autor" id="email" name="autor"  placeholder="autor" required />
+      
 
       <button type="submit">cadastrar</button>
-      <p><a href="../login/index.html">Voltar</a></p>
+      <p><a href="">Voltar</a></p>
     </form>
     <h2>Cadastrados</h2>
-    <ul id="cadastro-list"></ul>
-    <script src="/public/cadastro/scripts.js"></script>
+    <ul id="cadastroLivro-list"></ul>
+    <script src="/public/livros/scripts.js"></script>
   </body>
 </html>
