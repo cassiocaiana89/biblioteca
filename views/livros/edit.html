@@ -4,18 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Cadastro</title>
-    <link rel="stylesheet" href="/public/login/style.css" />
+    <link rel="stylesheet" href="/biblioteca/public/livros/style.css" />
   </head>
   <body>
-    <h1>EDITAR CADASTRO</h1>
-    <form id="edit-cadastro-form">
-      <input type="text" id="nome" placeholder="nome" required />
-      <input type="text" id="autor" placeholder="autor" required />
-      
 
-      <button type="submit">atualizar</button>
-      <p><a href="../login/index.html">Voltar</a></p>
-    </form>
-    <script src="/public/livros/scriptsEditLivros.js"></script>
+    <div class="container">
+      <form class="liv-edit-form" id="edit-cadastro-form">
+        <h1>EDITAR LIVROS</h1>
+
+        <div class="input-group">
+          <input type="text" id="nome" placeholder="nome" required />
+        </div>
+
+        <div class="input-group">
+          <input type="text" id="autor" placeholder="autor" required />
+        </div>
+        
+        <button type="submit">atualizar</button>
+
+        <p><a href="../login/index.html">Voltar</a></p>
+      </form>
+
+      <script src="/public/livros/scriptsEditLivros.js"></script>
+    </div>
+    
   </body>
 </html>

@@ -4,20 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biblioteca</title>
-    <link rel="stylesheet" href="/public/cadastro/style.css" />
+    <link rel="stylesheet" href="/biblioteca/public/livros/style.css" />
   </head>
   <body>
-    <h1>CADASTRO</h1>
-    <form id="add-cadastroLivro-form" action="/livros"  method="POST">
-      <input type="text" id="nome" name="nome" placeholder="nome" required />
-      <input type="autor" id="email" name="autor"  placeholder="autor" required />
-      
 
-      <button type="submit">cadastrar</button>
-      <p><a href="">Voltar</a></p>
-    </form>
-    <h2>Cadastrados</h2>
-    <ul id="cadastroLivro-list"></ul>
-    <script src="/public/livros/scripts.js"></script>
+    <div class="container">
+      <form class="liv-add-form" id="add-cadastroLivro-form" action="/livros"  method="POST">
+        <h1>ADIONAR LIVRO</h1>
+
+        <div class="input-group">
+          <input type="text" id="nome" name="nome" placeholder="nome" required />
+        </div>
+
+        <div class="input-group">
+          <input type="autor" id="email" name="autor"  placeholder="autor" required />
+        </div>
+        
+        <button type="submit">cadastrar</button>
+
+        <p><a href="">Voltar</a></p>
+      </form>
+      
+      <ul id="cadastroLivro-list"></ul>
+      <script src="/public/livros/scripts.js"></script>
+    </div>
+    
   </body>
 </html>
