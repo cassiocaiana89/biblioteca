@@ -20,15 +20,15 @@ class cadastroController {
 
   async store(req, res) {
     const { nome, email, senha } = req.body;
-
-    const user = await prisma.user.create({
+console.log(nome, email, senha);
+    const user = await prisma.usuario.create({
       data: {
         nome,
         email,
         senha,
       },
     });
-
+    console.log(user);
     res.json(user);
   }
 
@@ -36,7 +36,7 @@ class cadastroController {
     const { id } = req.params;
     const { nome, email, senha } = req.body;
 
-    const user = await prisma.user.update({
+    const user = await prisma.usuario.update({
       where: {
         id: parseInt(id),
       },
@@ -53,7 +53,7 @@ class cadastroController {
   async destroy(req, res) {
     const { id } = req.params;
 
-    const user = await prisma.user.delete({
+    const user = await prisma.usuario.delete({
       where: {
         id: parseInt(id),
       },
@@ -63,7 +63,7 @@ class cadastroController {
   }
 
   async list(req, res) {
-    const users = await prisma.user.findMany();
+    const users = await prisma.usuario.findMany();
 
     res.json(users);
   }
@@ -71,7 +71,7 @@ class cadastroController {
   async search(req, res) {
     const { id } = req.params;
 
-    const user = await prisma.user.findUnique({
+    const user = await prisma.usuario.findUnique({
       where: {
         id: parseInt(id),
       },

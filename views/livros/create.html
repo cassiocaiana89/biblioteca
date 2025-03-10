@@ -3,18 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biblioteca</title>
+    <title>cadastrar livros</title>
     <link rel="stylesheet" href="/public/cadastro/style.css" />
   </head>
   <body>
     <h1>CADASTRO</h1>
-    <form id="add-cadastroLivro-form" action="/livros"  method="POST">
-      <input type="text" id="nome" name="nome" placeholder="nome" required />
-      <input type="autor" id="email" name="autor"  placeholder="autor" required />
-      
+    <form id="add-cadastroLivro-form" action="/livros" method="POST">
+      <input type="text" id="titulo" name="titulo" placeholder="titulo" required />
+      <input type="text" id="autor" name="autor" placeholder="autor" required />
 
-      <button type="submit">cadastrar</button>
-      <p><a href="">Voltar</a></p>
+      <button type="submit">Cadastrar</button>
+      <p><a href="/">Voltar</a></p>
     </form>
     <h2>Cadastrados</h2>
     <ul id="cadastroLivro-list"></ul>

@@ -1,5 +1,6 @@
+// script de criação de livro
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("add-livro-form");
+    const form = document.getElementById("add-cadastroLivro-form");
     const errorMessage = document.getElementById("error-message");
 
     form.addEventListener("submit", async (event) => {
@@ -10,21 +11,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const response = await fetch("http://localhost:3000/livros", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ titulo, autor }),
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ titulo, autor }),
             });
             const data = await response.json();
             if (data) {
-                window.location.href = "http://localhost:3000/page/dashboard/livros";
+              window.location.href = "http://localhost:3000/page/dashboard/livros";
             } else {
-                errorMessage.textContent = "Erro ao adicionar livro. Tente novamente.";
+              errorMessage.textContent = "Erro ao logar. Tente novamente.";
             }
-        } catch (error) {
-            console.error("Erro ao adicionar livro:", error);
-            errorMessage.textContent = "Erro ao adicionar livro. Tente novamente.";
-        }
-    });
-});
+            
+          } catch (error) {
+            console.error("Erro ao logar:", error);
+            errorMessage.textContent = "Erro ao logar. Tente novamente.";
+          }
+        });
+      });
