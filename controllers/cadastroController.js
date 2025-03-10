@@ -20,7 +20,7 @@ class cadastroController {
 
   async store(req, res) {
     const { nome, email, senha } = req.body;
-console.log(nome, email, senha);
+
     const user = await prisma.usuario.create({
       data: {
         nome,
@@ -28,7 +28,7 @@ console.log(nome, email, senha);
         senha,
       },
     });
-    console.log(user);
+
     res.json(user);
   }
 
