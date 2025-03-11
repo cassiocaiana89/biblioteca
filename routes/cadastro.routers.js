@@ -15,15 +15,18 @@ router.get("/page/usuarios/create/", cadastroController.create);
 
 router.get("/page/usuarios/:id", cadastroController.show);
 
-// Rotas dos Controllers
+//router.get("/page/usuarios/:id", cadastroController.destroy);
+
+
+/// controllers
 
 router.get("/usuarios", cadastroController.list);
 
 router.get("/usuarios/:id", cadastroController.search);
 
-router.post("/cadastro", cadastroController.store);
-
 router.post("/usuarios", cadastroController.store);
+
+//router.post("/usuarios", cadastroController.store);
 
 router.put("/usuarios/:id", cadastroController.update);
 

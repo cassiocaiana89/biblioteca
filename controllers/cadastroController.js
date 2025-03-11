@@ -35,7 +35,7 @@ class cadastroController {
   async update(req, res) {
     const { id } = req.params;
     const { nome, email, senha } = req.body;
-
+    
     const user = await prisma.usuario.update({
       where: {
         id: parseInt(id),
@@ -46,6 +46,9 @@ class cadastroController {
         senha,
       },
     });
+    res.render("update", { user });
+
+    
 
     res.json(user);
   }

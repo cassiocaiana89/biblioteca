@@ -1,27 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const div = document.getElementById("list-usuarios");
-    listLivro();
-  
-    async function listLivro() {
-      try {
-        const response = await fetch("http://localhost:3000/livros", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await response.json();
-        if (data) {
-          window.location.href = "http://localhost:3000/page/dashboard/livros";
-        } else {
-          errorMessage.textContent = "Erro ao encontrar o livro. Tente novamente.";
-        }
-      } catch (error) {
-        console.error("Erro ao logar:", error);
-        errorMessage.textContent = "Erro ao encontrar o livro. Tente novamente.";
-      }
-    }
-  });
-  
- 
+document.addEventListener("DOMContentLoaded", async () => {
+  const livroList = document.getElementById("livro-list");
 
+  try {
+    const response = await fetch("http://localhost:3000/livros");
+    const livro = await response.json();
+
+    if (livro) {
+      livro.forEach((livro) => {
+        const li = document.createElement("li");
+        li.textContent = `${livro.titulo} - ${livro.autor}`;
+        livroList.appendChild(li);
+      });
+    }
+  } catch (error) {
+    console.error("Erro ao buscar os livros:", error);
+  }
+});

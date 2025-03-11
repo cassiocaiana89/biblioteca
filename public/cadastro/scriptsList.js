@@ -1,24 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const div = document.getElementById("list-usuarios");
-  listUsers();
+document.addEventListener("DOMContentLoaded", async () => {
+  const usuarioList = document.getElementById("usuario-list");
 
-  async function listUsers() {
-    try {
-      const response = await fetch("http://localhost:3000/usuarios", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+  try {
+    const response = await fetch("http://localhost:3000/usuarios");
+    const usuarios = await response.json();
+
+    if (usuarios) {
+      usuarios.forEach((usuario) => {
+        const li = document.createElement("li");
+        li.textContent = `${usuario.nome} - ${usuario.email}`;
+        usuarioList.appendChild(li);
       });
-      const data = await response.json();
-      if (data) {
-        window.location.href = "http://localhost:3000/page/dashboard/cadastro";
-      } else {
-        errorMessage.textContent = "Erro ao logar. Tente novamente.";
-      }
-    } catch (error) {
-      console.error("Erro ao logar:", error);
-      errorMessage.textContent = "Erro ao logar. Tente novamente.";
     }
+  } catch (error) {
+    console.error("Erro ao buscar usuários:", error);
   }
 });
