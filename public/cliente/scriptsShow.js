@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const usuarioDetalhes = document.getElementById("usuario-detalhes");
+  const clienteDetalhes = document.getElementById("cliente-detalhes");
   const queryParams = new URLSearchParams(window.location.search);
-  const userId = queryParams.get("id");
+  const clienteId = queryParams.get("id");
 
   try {
-    const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
-    const usuario = await response.json();
+    const response = await fetch(`http://localhost:3000/clientes/${clienteId}`);
+    const cliente = await response.json();
 
-    if (usuario) {
+    if (cliente) {
       const liNome = document.createElement("li");
-      liNome.textContent = `Nome: ${usuario.nome}`;
-      usuarioDetalhes.appendChild(liNome);
+      liNome.textContent = `Nome: ${cliente.nome}`;
+      clienteDetalhes.appendChild(liNome);
 
       const liEmail = document.createElement("li");
-      liEmail.textContent = `Email: ${usuario.email}`;
-      usuarioDetalhes.appendChild(liEmail);document.addEventListener("DOMContentLoaded", async () => {
+      liEmail.textContent = `Email: ${cliente.email}`;
+      clienteDetalhes.appendChild(liEmail);document.addEventListener("DOMContentLoaded", async () => {
         const form = document.getElementById("edit-cadastro-form");
         const queryParams = new URLSearchParams(window.location.search);
         const userId = queryParams.get("id");
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const id = document.getElementById("id").value;
       
           try {
-            const response = await fetch(`http://localhost:3000/usuarios/${id}`, {
+            const response = await fetch(`http://localhost:3000/clientes/${id}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
@@ -39,21 +39,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       
             const data = await response.json();
             if (data) {
-              window.location.href = "http://localhost:3000/page/usuarios";
+              window.location.href = "http://localhost:3000/page/dashboard/clientes";
             } else {
-              console.error("Erro ao editar usuário.");
+              console.error("Erro ao editar cliente.");
             }
           } catch (error) {
-            console.error("Erro ao editar usuário:", error);
+            console.error("Erro ao editar cliente:", error);
           }
         });
       });
 
       const liSenha = document.createElement("li");
-      liSenha.textContent = `Senha: ${usuario.senha}`;
-      usuarioDetalhes.appendChild(liSenha);
+      liSenha.textContent = `Senha: ${cliente.senha}`;
+      clienteDetalhes.appendChild(liSenha);
     }
   } catch (error) {
-    console.error("Erro ao buscar usuário:", error);
+    console.error("Erro ao buscar cliente:", error);
   }
 });

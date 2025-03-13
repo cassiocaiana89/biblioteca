@@ -18,18 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const data = await response.json();
       if (data) {
-        window.location.href = "http://localhost:3000/page/dashboard";
+        window.location.href = "http://localhost:3000/page/livros"; 
       } else {
         errorMessage.textContent = "Erro ao logar. Tente novamente.";
       }
-      /*if (response.redirected) {
-        window.location.href = response.url;
-      } else {
-        const result = await response.text();
-        errorMessage.textContent = result;
-      }
-
-      form.reset();*/
     } catch (error) {
       console.error("Erro ao logar:", error);
       errorMessage.textContent = "Erro ao logar. Tente novamente.";

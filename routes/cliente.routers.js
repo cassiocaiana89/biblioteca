@@ -1,21 +1,23 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-const clienteController = require('../controllers/clienteController');
+const clienteController = require("../controllers/clienteController");
+const auth = require("../middleware/auth");
 
 
-//views
 
-router.get("page/clientes", clienteController.index);
+router.get("/page/clientes", clienteController.index);
 
-router.get("page/clientes/edit/:id", clienteController.edit);
+router.get("/page/clientes/edit/", clienteController.edit);
 
-router.get("page/clientes/create/", clienteController.create);
+router.get("/page/clientes/create/", clienteController.create);
 
-router.get("page/clientes/:id", clienteController.show);
+router.get("/page/clientes/show/", clienteController.show);
 
-// controllers
+router.get("/page/clientes/destory/", clienteController.destroy);
+
+/// controllers
 
 router.get("/clientes", clienteController.list);
 

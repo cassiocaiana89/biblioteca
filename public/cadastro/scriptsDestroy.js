@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const form = document.getElementById("edit-cadastro-form");
+  const form = document.getElementById("delete-cadastro-form");
   const queryParams = new URLSearchParams(window.location.search);
   const userId = queryParams.get("id");
   document.getElementById("id").value = userId;
 
   buscarDados(userId);
 
-  async function buscarDados(id){
-    try{
+  async function buscarDados(id) {
+    try {
       const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
       const usuario = await response.json();
       document.getElementById("nome").value = usuario.nome;
       document.getElementById("email").value = usuario.email;
       document.getElementById("senha").value = usuario.senha;
-  } catch (error) {
-    console.error("Erro ao editar usuário:", error);
-  }
+    } catch (error) {
+      console.error("Erro ao buscar dados do usuário:", error);
+    }
   }
 
   form.addEventListener("submit", async (event) => {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const response = await fetch(`http://localhost:3000/usuarios/${id}`, {
-        method: "PUT",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (data) {
         window.location.href = "http://localhost:3000/page/usuarios";
       } else {
-        console.error("Erro ao editar usuário.");
+        console.error("Erro ao deletar usuário.");
       }
     } catch (error) {
-      console.error("Erro ao editar usuário:", error);
+      console.error("Erro ao deletar usuário:", error);
     }
   });
 });

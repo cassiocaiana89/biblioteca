@@ -18,6 +18,10 @@ class cadastroController {
     res.sendFile("edit.html", { root: "./views/cadastro/" });
   }
 
+  async delete(req, res) {
+    res.sendFile("delete.html", { root: "./views/cadastro/" });
+  }
+
   async store(req, res) {
     const { nome, email, senha } = req.body;
 
@@ -46,10 +50,7 @@ class cadastroController {
         senha,
       },
     });
-    res.render("update", { user });
-
     
-
     res.json(user);
   }
 

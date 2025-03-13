@@ -3,43 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="/biblioteca/public/login/style.css" />
+    <title>Login de Usuários</title>
+    <link rel="stylesheet" href="/cadastro/style.css" />
   </head>
   <body>
-
     <div class="container">
-
-      <form class="login-form" id="add-login-form">
-
+      <form class="login-form" id="add-login-form" action="/login" method="POST">
         <h1>LOGIN</h1>
 
         <div class="input-group">
-          <input type="text" id="email" name="email" placeholder="email" required />
-        </div>
-      
-        <div class="input-group">
-          <input
-          type="password"
-          id="senha"
-          name="senha"
-          placeholder="senha"
-          required
-          />
+          <input type="email" id="email" name="email" placeholder="Email" required />
+          <input type="password" id="senha" name="senha" placeholder="Senha" required />
         </div>
 
-        <button type="submit">entrar</button>
+        <button type="submit">Entrar</button>
 
+        <p id="error-message" class="error-message"></p>
+        <p><a href="http://localhost:3000/page/usuarios/create">Cadastrar</a></p>
       </form>
-
-      <div id="error-message" style="color: red"></div>
-
-      <p>
-        Não tem uma conta? <a href="../cadastro/index.html">Cadastre-se aqui</a>
-      </p>
-
-      <script src="/login/scripts.js"></script>
     </div>
-    
+
+    <script src="/cadastro/scriptsLogin.js"></script>
   </body>
 </html>
