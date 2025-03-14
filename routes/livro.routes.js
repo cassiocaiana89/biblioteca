@@ -19,14 +19,14 @@ router.get("/page/livros/destroy/", livrocontroller.destroy);
 
 /// controllers
 
-router.get("//livros", livrocontroller.list);
+router.get("/livros", livrocontroller.list);
 
-router.get("//livros/:id", livrocontroller.search);
+router.get("/livros/:id", livrocontroller.search);
 
-router.post("//livros", livrocontroller.store);
+router.post("/livros", livrocontroller.store);
 
 router.put("/livros/:id", livrocontroller.update);
 
-router.delete("//livros/:id", livrocontroller.destroy);
+router.delete("/livros/:id", livrocontroller.destroy);
 
 module.exports = router;

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const data = await response.json();
       if (data) {
-        window.location.href = "http://localhost:3000/page/livros";
+        window.location.href = "http://localhost:3000/page/dashboard/livros";
       } else {
         errorMessage.textContent = "Erro ao logar. Tente novamente.";
       }
