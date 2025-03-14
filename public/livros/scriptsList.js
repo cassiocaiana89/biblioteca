@@ -2,15 +2,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   const livroList = document.getElementById("livro-list");
 
   try {
-    const response = await fetch('http://localhost:3000/clientes');
-    const livros = await response.json();
+    const response = await fetch('http://localhost:3000/livros');
+    const livro = await response.json();
 
-    livros.forEach(livro => {
+    livro.forEach(livro => {
       const li = document.createElement('li');
       li.classList.add("livro-item");
 
       const livroInfo = document.createElement("span");
-      livroInfo.textContent = `Nome: ${livro.titulo} | Email: ${livro.autor}`;
+      livroInfo.textContent = `titulo: ${livro.titulo} | autor: ${livro.autor} | editora: ${livro.editora}`;
       li.appendChild(livroInfo);
 
       livroList.appendChild(li);

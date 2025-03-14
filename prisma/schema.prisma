@@ -15,8 +15,9 @@ datasource db {
 
 model livro{
   id Int @id @default(autoincrement())
-  titulo String
+  titulo String?
   autor String
+  editora String
 }
 
 

@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function buscarDados(id) {
     try {
-      const response = await fetch(`http://localhost:3000/clientes/${livroId}`);
+      const response = await fetch(`http://localhost:3000/livros/${livroId}`);
       const livro = await response.json();
-      document.getElementById("titilo").value = livro.titilo;
+      document.getElementById("titulo").value = livro.titulo;
       document.getElementById("autor").value = livro.autor;
-      
+      document.getElementById("editora").value = livro.editora;
     } catch (error) {
       console.error("Erro ao buscar dados do livro:", error);
     }
@@ -21,8 +21,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const titulo= document.getElementById("titulo").value;
+    const titulo = document.getElementById("titulo").value;
     const autor = document.getElementById("autor").value;
+    const editora = document.getElementById("editora").value;
     const id = document.getElementById("id").value;
 
     try {
@@ -31,12 +32,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ titulo, autor }),
+        body: JSON.stringify({ titulo, autor, editora }),
       });
 
       const data = await response.json();
       if (data) {
-        window.location.href = "http://localhost:3000/page/dashboard/livros";
+        window.location.href = "http://localhost:3000/page/livros";
       } else {
         console.error("Erro ao deletar livro.");
       }

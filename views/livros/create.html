@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cadastrar usuarios</title>
+    <title>cadastrar livros</title>
     <link rel="stylesheet" href="/cadastro/style.css" />
   </head>
   <body>
     <div class="container">
 
-      <form class="cadastro-form" id="add-cadastro-form" action="/livros"  method="POST">
+      <form class="livro-form" id="add-livro-form" action="/livros"  method="POST">
         <h1>CADASTRAR</h1>
 
         <div class="input-group">
-          <input type="text" id="titulo" name="titulo" placeholder="titulo" required />
+          <input type="text" id="Titulo" name="Titulo" placeholder="Titulo" required />
           <input type="text" id="autor" name="autor"  placeholder="autor" required />
-          <!-- <input type="password" id="senha" name="senha" placeholder="senha" required /> -->
+          <input type="text" id="editora" name="editora" placeholder="editora" required />
         </div>
         
         <button type="submit">cadastrar</button>
@@ -23,8 +23,8 @@
         <p><a href="../login/index.html">Voltar</a></p>
     </form>
 
-    <ul id="cadastro-list"></ul>
-    <script src="/livros/scripts.js"></script>
+    <ul id="livros-list"></ul>
+    <script src="/cadastro/scripts.js"></script>
     </div>
     
   </body>

@@ -3,17 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Editar Cadastro</title>
+    <title>Editar Livro</title>
     <link rel="stylesheet" href="/cadastro/style.css" />
   </head>
   <body>
     <div class="container">
-      <form class="cadastro-form" id="edit-cadastro-form">
+      <form class="livro-form" id="edit-livro-form">
         <h1>EDITAR CADASTRO</h1>
 
         <div class="input-group">
           <input type="text" id="Titulo" name="Titulo" placeholder="Titulo" required />
-          <input type="text" id="Autor" name="Autor"  placeholder="Autor" required />
+          <input type="text" id="autor" name="autor"  placeholder="autor" required />
+          <input type="text" id="editora" name="editora" placeholder="editora" required />
           <input type="hidden" id="id" name="id" value="<%= id %>">
         </div>
         
@@ -22,7 +23,7 @@
         <p><a href="../login/index.html">Voltar</a></p>
       </form>
 
-      <script src="/cadastro/scriptsEdit.js"></script>
+      <script src="/livros/scriptsEdit.js"></script>
     </div>
     
   </body>

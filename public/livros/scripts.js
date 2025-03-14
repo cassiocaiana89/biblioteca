@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const titulo = document.getElementById("titulo").value;
     const autor = document.getElementById("autor").value;
+    const editora = document.getElementById("editora").value;
     
 
     try {
@@ -15,18 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ titulo, autor }),
+        body: JSON.stringify({ titulo, autor, editora }),
       });
       const data = await response.json();
       if (data) {
-        window.location.href = "http://localhost:3000/page/dashboard/livros";
+        window.location.href = "http://localhost:3000/page/livros";
       } else {
-        errorMessage.textContent = "Erro ao cadastrar livro. Tente novamente.";
+        errorMessage.textContent = "Erro ao logar. Tente novamente.";
       }
       
     } catch (error) {
-      console.error("Erro ao cadastrar livro:", error);
-      errorMessage.textContent = "Erro ao cadastrar livro. Tente novamente.";
+      console.error("Erro ao logar:", error);
+      errorMessage.textContent = "Erro ao logar. Tente novamente.";
     }
   });
 });

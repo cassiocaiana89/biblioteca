@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const form = document.getElementById("edit-cadastro-form");
+  const form = document.getElementById("edit-livro-form");
   const queryParams = new URLSearchParams(window.location.search);
   const livroId = queryParams.get("id");
   document.getElementById("id").value = livroId;
@@ -10,18 +10,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     try{
       const response = await fetch(`http://localhost:3000/livros/${livroId}`);
       const livro = await response.json();
-      document.getElementById("Titulo").value = livro.titulo;
-      document.getElementById("Autor").value = livro.autor;
-    } catch (error) {
-      console.error("Erro ao buscar dados do livro:", error);
-    }
+      document.getElementById("titulo").value = livro.titulo;
+      document.getElementById("autor").value = livro.autor;
+      document.getElementById("editora").value = livro.editora;
+  } catch (error) {
+    console.error("Erro ao editar usuário:", error);
+  }
   }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const titulo = document.getElementById("Titulo").value;
-    const autor = document.getElementById("Autor").value;
+    const titulo = document.getElementById("titulo").value;
+    const autor = document.getElementById("autor").value;
+    const editora = document.getElementById("editora").value;
     const id = document.getElementById("id").value;
 
     try {
@@ -30,41 +32,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ titulo, autor }),
+        body: JSON.stringify({ titulo, autor, editora }),
       });
 
       const data = await response.json();
       if (data) {
-        window.location.href = "http://localhost:3000/page/dashboard/livros";
+        window.location.href = "http://localhost:3000/page/livros";
       } else {
         console.error("Erro ao editar livro.");
       }
     } catch (error) {
       console.error("Erro ao editar livro:", error);
     }
-  });// criar um botão deletar
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Deletar";
-  deleteButton.id = "delete-button";
-
-  form.appendChild(deleteButton);
-
-  deleteButton.addEventListener("click", async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch(`http://localhost:3000/livros/${livroId}`, {
-        method: "DELETE",
-      });
-
-      if (data) {
-        window.location.href = "http://localhost:3000/page/dashboard/livros";
-      } else {
-        console.error("Erro ao deletar livro.");
-      }
-    } catch (error) {
-      console.error("Erro ao deletar livro:", error);   
-    }
-});
-
+  });
 });
